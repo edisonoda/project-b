@@ -1,0 +1,120 @@
+[gd_scene load_steps=16 format=3 uid="uid://uisw7olibfma"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_daqcd"]
+[ext_resource type="Texture2D" uid="uid://1l0tlh7wfwf3" path="res://assets/Soldiers/Assault-Class.png" id="2_dre4q"]
+[ext_resource type="PackedScene" uid="uid://cc72301t2l74o" path="res://scenes/classes/assault_class.tscn" id="3_0vovb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xht8b"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tx8i"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ht3b"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(16, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyhaf"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gemr"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0monb"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oua82"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwnps"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewnne"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b4kw"]
+atlas = ExtResource("2_dre4q")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wysi7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xht8b")
+}],
+"loop": true,
+"name": &"dashing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tx8i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ht3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyhaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gemr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0monb")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oua82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwnps")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewnne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b4kw")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72m1b"]
+radius = 3.16228
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_daqcd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wysi7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.853819
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_72m1b")
+
+[node name="DamagedTimer" type="Timer" parent="."]
+
+[node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
+
+[connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]
