@@ -16,10 +16,6 @@ func _physics_process(delta):
 	if direction:
 		player.velocity.x = direction.x * player.speed * delta
 		player.velocity.y = direction.y * player.speed * delta
-		if player.velocity.x > 0:
-			sprite.flip_h = false
-		elif player.velocity.x < 0:
-			sprite.flip_h = true
 		
 		sprite.play("walking")
 	else:
