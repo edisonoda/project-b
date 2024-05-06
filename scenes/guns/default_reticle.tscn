@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxrches6f3jyb"]
+
+[ext_resource type="Texture2D" uid="uid://6fidiyhoputy" path="res://assets/Reticles/default_reticle.png" id="1_5shtg"]
+
+[node name="DefaultReticle" type="Sprite2D"]
+z_index = 10
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_5shtg")

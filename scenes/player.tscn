@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://uisw7olibfma"]
+[gd_scene load_steps=17 format=3 uid="uid://uisw7olibfma"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_daqcd"]
 [ext_resource type="Texture2D" uid="uid://1l0tlh7wfwf3" path="res://assets/Soldiers/Assault-Class.png" id="2_dre4q"]
 [ext_resource type="PackedScene" uid="uid://cc72301t2l74o" path="res://scenes/classes/assault_class.tscn" id="3_0vovb"]
+[ext_resource type="PackedScene" uid="uid://cu3mbnqj3sro5" path="res://scenes/guns/rifle.tscn" id="4_q2l37"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xht8b"]
 atlas = ExtResource("2_dre4q")
@@ -116,5 +117,7 @@ shape = SubResource("CircleShape2D_72m1b")
 [node name="DamagedTimer" type="Timer" parent="."]
 
 [node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
+
+[node name="Rifle" parent="." instance=ExtResource("4_q2l37")]
 
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

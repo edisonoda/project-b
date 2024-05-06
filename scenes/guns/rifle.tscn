@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu3mbnqj3sro5"]
+
+[ext_resource type="Script" path="res://scripts/guns/gun.gd" id="1_x306o"]
+[ext_resource type="PackedScene" uid="uid://bxrches6f3jyb" path="res://scenes/guns/default_reticle.tscn" id="2_g8yp5"]
+
+[node name="Rifle" type="Node2D"]
+script = ExtResource("1_x306o")
+reticle_path = NodePath("DefaultReticle")
+
+[node name="DefaultReticle" parent="." instance=ExtResource("2_g8yp5")]

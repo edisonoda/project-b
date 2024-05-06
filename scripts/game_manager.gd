@@ -8,6 +8,9 @@ const KNOCKBACK_FORCE = 10.0
 @onready var enemies = %Enemies
 @onready var player = %Player
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func global_knockback(position: Vector2):
 	var children = enemies.get_children()
 	var acceleration
@@ -22,6 +25,10 @@ func global_knockback(position: Vector2):
 func game_over():
 	game_over_timer.start()
 	Engine.time_scale = 0.3
+
+func shake_camera(intensity: float = 1):
+	#TODO
+	pass
 
 func _on_game_over_timer_timeout():
 	get_tree().reload_current_scene()

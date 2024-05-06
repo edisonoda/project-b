@@ -82,10 +82,11 @@ floor_block_on_wall = false
 script = ExtResource("1_0cymc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 2)
+position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_v40ap")
 autoplay = "default"
-frame_progress = 0.352372
+frame = 6
+frame_progress = 0.400358
 
 [node name="DangerZone" parent="." instance=ExtResource("3_pf4sy")]
 
