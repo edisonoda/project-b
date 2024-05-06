@@ -1,14 +1,13 @@
-extends RigidBody2D
+extends Node2D
 
 class_name Projectile
 
-@export_file("*.png") var sprite = "res://assets/Projectiles/bullets+plasma.png"
-@export var damage: float = 0.5
-@export var speed: float = 5000
+@export var damage: float = 0.2
+@export var speed: float = 200
 
 var direction: Vector2
 
-func _init(dir: Vector2):
+func setup(dir: Vector2):
 	direction = dir
 
 func _physics_process(delta):
