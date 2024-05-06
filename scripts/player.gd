@@ -27,13 +27,6 @@ func _ready():
 	change_state("normal")
 
 func _physics_process(_delta):
-	var direction = get_global_mouse_position()
-	
-	if direction.x > position.x:
-		sprite.flip_h = false
-	elif direction.x < position.x:
-		sprite.flip_h = true
-	
 	move_and_slide()
 
 func receive_damage(damage):

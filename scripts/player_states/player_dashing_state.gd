@@ -4,6 +4,12 @@ class_name PlayerDashingState
 
 const FRICTION = 2.5
 
+func _ready():
+	if player.velocity.x > 0:
+		sprite.flip_h = false
+	elif player.velocity.x < 0:
+		sprite.flip_h = true
+
 func _physics_process(delta):
 	var velocity = Vector2(player.velocity.x * FRICTION * delta, player.velocity.y * FRICTION * delta)
 	

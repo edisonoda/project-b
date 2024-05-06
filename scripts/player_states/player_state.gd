@@ -23,5 +23,11 @@ func _physics_process(delta):
 		player.velocity.y = move_toward(player.velocity.y, 0, player.speed * delta)
 		sprite.play("idle")
 	
+	var mouse = get_global_mouse_position()
+	if mouse.x > player.position.x:
+		sprite.flip_h = false
+	elif mouse.x < player.position.x:
+		sprite.flip_h = true
+	
 func receive_damage(damage):
 	pass

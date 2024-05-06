@@ -8,23 +8,15 @@ class_name PClass
 @export var ability_cooldown: float = 2.0
 
 var player: Player
+var ability_timer: Timer = Timer.new()
 var ability_recharging_time: float = 0.0
-var ability_started: bool = false
 
-func _process(delta):
-	if not ability_started:
-		return
-	
-	ability_recharging_time += delta
-	
-	if ability_recharging_time > ability_cooldown:
-		ability_recharging_time = 0.0
-		ability_started = false
-		ability_finished()
+func _ready():
+	ability_timer.timeout.connect(ability_finished)
+	ability_timer.wait_time = ability_cooldown
 
 func use_ability():
-	if ability_recharging_time == 0.0:
-		ability_started = true
+	if ability_timer.is_stopped():
 		ability()
 
 func ability():
