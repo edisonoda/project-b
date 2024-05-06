@@ -4,7 +4,7 @@ class_name PlayerDamagedState
 
 const BLINKING_TIME = 0.2
 
-var blinking_time: float = 0.0
+var blinking_time: float = BLINKING_TIME
 var blinked: bool = false
 
 func _ready():

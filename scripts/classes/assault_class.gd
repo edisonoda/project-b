@@ -5,6 +5,9 @@ extends PClass
 var dashing_force
 
 func _process(delta):
+	if not player.state is PlayerDashingState:
+		return
+	
 	if player.velocity.length() < player.speed / 50:
 		player.change_state("normal")
 

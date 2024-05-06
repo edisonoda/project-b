@@ -274,17 +274,47 @@ unique_name_in_owner = true
 
 [node name="Wasp" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(121, -4)
+speed = null
+acceleration = null
+player_distance = null
+HEALTH = null
+WEIGHT = null
+EXP = null
 
 [node name="Wasp2" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-6, 77)
+speed = null
+acceleration = null
+player_distance = null
+HEALTH = null
+WEIGHT = null
+EXP = null
 
 [node name="Wasp3" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(62, -85)
+speed = null
+acceleration = null
+player_distance = null
+HEALTH = null
+WEIGHT = null
+EXP = null
 
 [node name="Wasp4" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-193, 45)
+speed = null
+acceleration = null
+player_distance = null
+HEALTH = null
+WEIGHT = null
+EXP = null
 
 [node name="Wasp5" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-164, -59)
+speed = null
+acceleration = null
+player_distance = null
+HEALTH = null
+WEIGHT = null
+EXP = null
 
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]
