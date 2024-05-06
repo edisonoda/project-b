@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://x7fla26eq33m"]
+[gd_scene load_steps=15 format=3 uid="uid://x7fla26eq33m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/wasp.gd" id="1_0cymc"]
 [ext_resource type="Texture2D" uid="uid://bpkmfhe3wojk8" path="res://assets/Robots/Wasp.png" id="2_vh6n8"]
@@ -71,16 +71,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_glllb"]
 radius = 4.0
 
-[node name="Wasp" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8pepm"]
+radius = 4.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
+floor_stop_on_slope = false
+floor_block_on_wall = false
 script = ExtResource("1_0cymc")
-speed = null
-acceleration = null
-player_distance = null
-HEALTH = null
-WEIGHT = null
-EXP = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_v40ap")
 autoplay = "default"
 frame_progress = 0.352372
@@ -90,4 +92,5 @@ frame_progress = 0.352372
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
 shape = SubResource("CircleShape2D_glllb")
 
-[connection signal="body_entered" from="DangerZone" to="." method="_on_danger_zone_body_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8pepm")

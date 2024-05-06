@@ -1,9 +1,9 @@
-extends Node2D
+extends CharacterBody2D
 
 class_name Enemy
 
-@export var speed: float = 0.5
-@export var acceleration: float = 1.0
+@export var speed: float = 40
+@export var acceleration: float = 100.0
 @export var player_distance: float = 5.0
 @export var health: float = 3.0
 @export var weight: float = 5.0
@@ -11,7 +11,6 @@ class_name Enemy
 
 @onready var player = %Player
 
-var velocity: Vector2 = Vector2(0.0, 0.0)
 var knockback_staggered: bool = false
 
 func get_weight() -> float:
@@ -22,8 +21,7 @@ func _physics_process(delta):
 		knockback_staggered = false
 	
 	move(delta)
-	position.x += velocity.x
-	position.y += velocity.y
+	move_and_slide()
 
 func move(delta):
 	pass
