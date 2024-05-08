@@ -7,7 +7,7 @@ class_name Enemy
 @export var player_distance: float = 5.0
 @export var health: float = 3.0
 @export var weight: float = 5.0
-@export var exp: float = 10.0
+@export var exp_points: float = 10.0
 
 @onready var player = %Player
 
@@ -23,5 +23,5 @@ func _physics_process(delta):
 	move(delta)
 	move_and_slide()
 
-func move(delta):
+func move(_delta):
 	pass

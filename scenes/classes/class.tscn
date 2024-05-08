@@ -4,3 +4,7 @@
 
 [node name="Class" type="Node"]
 script = ExtResource("1_eqgas")
+sheet = null
+health = null
+speed = null
+ability_cooldown = null

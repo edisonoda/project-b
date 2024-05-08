@@ -8,22 +8,19 @@ class_name PClass
 @export var ability_cooldown: float = 2.0
 
 var player: Player
-var ability_timer: Timer = Timer.new()
+var ability_timer: Repeater = Repeater.new()
 var ability_recharging_time: float = 0.0
 
 func _ready():
+	ability_timer.setup(self, ability_cooldown)
 	ability_timer.timeout.connect(ability_finished)
-	ability_timer.wait_time = ability_cooldown
 
 func use_ability():
-	if ability_timer.is_stopped():
+	if not ability_timer.running:
 		ability()
 
 func ability():
 	pass
-
-func change_cooldown(cd):
-	ability_cooldown = cd
 
 func update_player(p):
 	player = p

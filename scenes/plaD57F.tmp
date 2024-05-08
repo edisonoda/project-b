@@ -119,7 +119,11 @@ shape = SubResource("CircleShape2D_72m1b")
 [node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
 
 [node name="Rifle" parent="." instance=ExtResource("4_q2l37")]
+projectile_path = null
 shoot_point = NodePath("Marker2D")
+fire_rate = null
+reload_time = null
+max_ammo = null
 
 [node name="Marker2D" type="Marker2D" parent="Rifle"]
 position = Vector2(5, 1)

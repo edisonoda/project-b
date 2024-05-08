@@ -7,7 +7,8 @@ class_name Projectile
 
 var direction: Vector2
 
-func setup(dir: Vector2):
+func setup(dir: Vector2, origin: Vector2 = Vector2(0, 0)):
+	position = origin
 	direction = dir
 
 func _physics_process(delta):

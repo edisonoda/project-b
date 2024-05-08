@@ -5,6 +5,10 @@
 
 [node name="Rifle" type="Node2D"]
 script = ExtResource("1_x306o")
+projectile_path = null
 reticle_path = NodePath("DefaultReticle")
+fire_rate = null
+reload_time = null
+max_ammo = null
 
 [node name="DefaultReticle" parent="." instance=ExtResource("2_g8yp5")]
