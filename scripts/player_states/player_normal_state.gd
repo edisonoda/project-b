@@ -2,9 +2,6 @@ extends PlayerState
 
 class_name PlayerNormalState
 
-func _ready():
-	sprite.flip_h = get_global_mouse_position().x < player.position.x
-
 func _process(_delta):
 	if Input.is_action_pressed("Reload") and player.gun.check_reload():
 		player.gun.reload()
@@ -32,12 +29,21 @@ func check_walking(delta):
 		sprite.play("idle")
 
 func check_player_orientation():
-	var flipped = sprite.flip_h
-	sprite.flip_h = get_global_mouse_position().x < player.position.x
+	var marker_position = player.gun_marker.position.x
+	var marker_scale = player.gun_marker.scale.x
 	
-	if flipped != sprite.flip_h:
-		player.gun_marker.position.x *= -1
-		player.gun_marker.scale.x *= -1
+	if get_global_mouse_position().x < player.position.x:
+		sprite.flip_h = true
+		
+		if marker_position > 0:
+			player.gun_marker.position.x = -abs(marker_position)
+			player.gun_marker.scale.x = -abs(marker_scale)
+	else:
+		sprite.flip_h = false
+		
+		if marker_position < 0:
+			player.gun_marker.position.x = abs(marker_position)
+			player.gun_marker.scale.x = abs(marker_scale)
 
 func shoot():
 	var a_sprite: AnimatedSprite2D = player.gun_marker.get_node("AnimatedSprite2D")
