@@ -1,9 +1,15 @@
-[gd_scene load_steps=22 format=3 uid="uid://x7fla26eq33m"]
+[gd_scene load_steps=24 format=3 uid="uid://x7fla26eq33m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/wasp.gd" id="1_0cymc"]
 [ext_resource type="Texture2D" uid="uid://bmyhm6rk2m2qu" path="res://assets/Effects/small-fragments.png" id="2_bmcts"]
+[ext_resource type="Shader" path="res://shaders/flash_white_shader.gdshader" id="2_qlx8v"]
 [ext_resource type="Texture2D" uid="uid://bpkmfhe3wojk8" path="res://assets/Robots/Wasp.png" id="2_vh6n8"]
 [ext_resource type="PackedScene" uid="uid://botex6haw4fv7" path="res://scenes/utils/danger_zone.tscn" id="3_x6fkj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bew52"]
+resource_local_to_scene = true
+shader = ExtResource("2_qlx8v")
+shader_parameter/white = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yyyc7"]
 atlas = ExtResource("2_bmcts")
@@ -122,14 +128,16 @@ radius = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pepm"]
 radius = 4.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Wasp" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 4
 floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("1_0cymc")
+sprite_path = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_bew52")
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_v40ap")
 autoplay = "default"

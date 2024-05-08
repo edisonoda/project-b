@@ -242,7 +242,7 @@ sources/0 = SubResource("TileSetAtlasSource_f3poe")
 
 [node name="Game" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
+[node name="GameManager" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("3_74cfe")
 
@@ -261,7 +261,8 @@ layer_1/tile_data = PackedInt32Array(-7, 0, 6, -6, 0, 6, -5, 0, 6, -4, 0, 6, -3,
 unique_name_in_owner = true
 position = Vector2(-40, -7)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera" type="Camera2D" parent="Player"]
+unique_name_in_owner = true
 zoom = Vector2(3, 3)
 limit_left = -544
 limit_top = -176
@@ -300,5 +301,3 @@ color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 color = Color(0.392157, 0.392157, 0.392157, 1)
-
-[connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]

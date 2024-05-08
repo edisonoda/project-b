@@ -17,11 +17,9 @@ func _ready():
 
 func blink():
 	if blinked:
-		sprite.modulate.g = 1.0
-		sprite.modulate.b = 1.0
+		sprite.modulate = Color.WHITE
 	else:
-		sprite.modulate.g = 0.0
-		sprite.modulate.b = 0.0
+		sprite.modulate = Color.RED
 	
 	blinked = !blinked
 	blinking_timer.restart()
