@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://djb4k1bsx23e6"]
+[gd_scene load_steps=8 format=3 uid="uid://djb4k1bsx23e6"]
 
 [ext_resource type="Texture2D" uid="uid://cmhc4jya2lvcq" path="res://assets/Tileset/tileset_arranged.png" id="1_ddr38"]
 [ext_resource type="PackedScene" uid="uid://uisw7olibfma" path="res://scenes/player.tscn" id="2_k8vjt"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="3_74cfe"]
+[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="4_6uohf"]
 [ext_resource type="PackedScene" uid="uid://x7fla26eq33m" path="res://scenes/enemies/wasp.tscn" id="4_o47pt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3poe"]
@@ -269,6 +270,11 @@ limit_bottom = 96
 limit_smoothed = true
 position_smoothing_enabled = true
 
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+color = Color(0.588235, 0.588235, 0.588235, 1)
+texture = ExtResource("4_6uohf")
+texture_scale = 2.0
+
 [node name="Enemies" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -286,5 +292,13 @@ position = Vector2(-193, 45)
 
 [node name="Wasp5" parent="Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-164, -59)
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Lighting"]
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
+color = Color(0.392157, 0.392157, 0.392157, 1)
 
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]

@@ -8,6 +8,7 @@ var blinking_timer: Repeater = Repeater.new()
 var blinked: bool = false
 
 func _ready():
+	super()
 	game_manager.global_knockback(player.position)
 	
 	blinking_timer.setup(self, BLINKING_TIME)

@@ -29,9 +29,6 @@ func _process(_delta):
 	reticle.position = mouse
 
 func shoot():
-	if not check_shoot():
-		return
-	
 	var dir = (get_local_mouse_position() - position).normalized()
 	var proj = projectile.instantiate()
 	proj.setup(dir, shoot_point.position)
@@ -45,11 +42,13 @@ func shoot():
 		fire_rate_timer.restart()
 
 func reload():
-	if not reload_timer.running:
-		reload_timer.restart()
+	reload_timer.restart()
 
 func check_shoot():
 	return not fire_rate_timer.running and not reload_timer.running and ammo > 0
+
+func check_reload():
+	return not reload_timer.running
 
 func on_reload_end():
 	ammo = max_ammo
