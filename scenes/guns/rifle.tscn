@@ -1,10 +1,83 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu3mbnqj3sro5"]
+[gd_scene load_steps=11 format=3 uid="uid://cu3mbnqj3sro5"]
 
 [ext_resource type="Script" path="res://scripts/guns/gun.gd" id="1_x306o"]
 [ext_resource type="PackedScene" uid="uid://bxrches6f3jyb" path="res://scenes/guns/default_reticle.tscn" id="2_g8yp5"]
+[ext_resource type="Texture2D" uid="uid://bpq3lb7xtrirp" path="res://assets/Guns/rifle.png" id="3_kgptn"]
+[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="4_qvi5d"]
+[ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="5_aeeby"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
+atlas = ExtResource("5_aeeby")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n87hn"]
+atlas = ExtResource("5_aeeby")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnagx"]
+atlas = ExtResource("5_aeeby")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu6di"]
+atlas = ExtResource("5_aeeby")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mmjwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"not_shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6auo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n87hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnagx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu6di")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 30.0
+}]
 
 [node name="Rifle" type="Node2D"]
+scale = Vector2(0.75, 0.75)
 script = ExtResource("1_x306o")
 reticle_path = NodePath("DefaultReticle")
+shoot_path = NodePath("GunMarker")
+animation_path = NodePath("GunMarker/FiringAnimation")
+light_path = NodePath("GunMarker/FiringLight")
 
 [node name="DefaultReticle" parent="." instance=ExtResource("2_g8yp5")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -1)
+texture = ExtResource("3_kgptn")
+
+[node name="GunMarker" type="Marker2D" parent="."]
+position = Vector2(9, -1)
+
+[node name="FiringAnimation" type="AnimatedSprite2D" parent="GunMarker"]
+position = Vector2(3, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mmjwo")
+animation = &"not_shooting"
+autoplay = "not_shooting"
+
+[node name="FiringLight" type="PointLight2D" parent="GunMarker"]
+position = Vector2(3, 0)
+scale = Vector2(0.0859375, 0.0859375)
+enabled = false
+color = Color(1, 1, 0, 1)
+energy = 5.0
+texture = ExtResource("4_qvi5d")

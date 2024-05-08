@@ -7,7 +7,7 @@ func _process(_delta):
 		player.gun.reload()
 	
 	if Input.is_action_pressed("Shoot") and player.gun.check_shoot():
-		shoot()
+		player.gun.shoot()
 	
 	if Input.is_action_just_pressed("Use Ability"):
 		player.p_class.use_ability()
@@ -29,35 +29,18 @@ func check_walking(delta):
 		sprite.play("idle")
 
 func check_player_orientation():
-	var marker_position = player.gun_marker.position.x
-	var marker_scale = player.gun_marker.scale.x
+	var gun_scale = player.gun.scale.y
 	
 	if get_global_mouse_position().x < player.position.x:
 		sprite.flip_h = true
 		
-		if marker_position > 0:
-			player.gun_marker.position.x = -abs(marker_position)
-			player.gun_marker.scale.x = -abs(marker_scale)
+		if gun_scale > 0:
+			player.gun.scale.y = -abs(gun_scale)
 	else:
 		sprite.flip_h = false
 		
-		if marker_position < 0:
-			player.gun_marker.position.x = abs(marker_position)
-			player.gun_marker.scale.x = abs(marker_scale)
-
-func shoot():
-	var a_sprite: AnimatedSprite2D = player.gun_marker.get_node("AnimatedSprite2D")
-	var light: PointLight2D = player.gun_marker.get_node("PointLight2D")
-	
-	light.enabled = true
-	player.gun.shoot()
-	
-	var stop_shooting = func():
-		a_sprite.play("not_shooting")
-		light.enabled = false
-	
-	a_sprite.animation_finished.connect(stop_shooting)
-	a_sprite.play("shooting")
+		if gun_scale < 0:
+			player.gun.scale.y = abs(gun_scale)
 
 func receive_damage(damage):
 	player.health -= damage

@@ -1,11 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://uisw7olibfma"]
+[gd_scene load_steps=17 format=3 uid="uid://uisw7olibfma"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_daqcd"]
 [ext_resource type="Texture2D" uid="uid://1l0tlh7wfwf3" path="res://assets/Soldiers/Assault-Class.png" id="2_dre4q"]
 [ext_resource type="PackedScene" uid="uid://cc72301t2l74o" path="res://scenes/classes/assault_class.tscn" id="3_0vovb"]
 [ext_resource type="PackedScene" uid="uid://cu3mbnqj3sro5" path="res://scenes/guns/rifle.tscn" id="4_q2l37"]
-[ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="5_41o8y"]
-[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="6_can6c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xht8b"]
 atlas = ExtResource("2_dre4q")
@@ -103,50 +101,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_72m1b"]
 radius = 3.16228
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
-atlas = ExtResource("5_41o8y")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n87hn"]
-atlas = ExtResource("5_41o8y")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnagx"]
-atlas = ExtResource("5_41o8y")
-region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vu6di"]
-atlas = ExtResource("5_41o8y")
-region = Rect2(24, 0, 8, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sis2h"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"not_shooting",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6auo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n87hn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hnagx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vu6di")
-}],
-"loop": false,
-"name": &"shooting",
-"speed": 30.0
-}]
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_daqcd")
@@ -160,28 +114,10 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_72m1b")
 
 [node name="Rifle" parent="." instance=ExtResource("4_q2l37")]
-shoot_path = NodePath("../GunMarker")
+position = Vector2(0, 2)
 
 [node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
 
 [node name="DamagedTimer" type="Timer" parent="."]
-
-[node name="GunMarker" type="Marker2D" parent="."]
-position = Vector2(5, 1)
-
-[node name="PointLight2D" type="PointLight2D" parent="GunMarker"]
-position = Vector2(4, 0)
-scale = Vector2(0.0859375, 0.0859375)
-enabled = false
-color = Color(1, 1, 0, 1)
-energy = 5.0
-texture = ExtResource("6_can6c")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunMarker"]
-position = Vector2(4, 5.96046e-08)
-scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_sis2h")
-animation = &"not_shooting"
-autoplay = "not_shooting"
 
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

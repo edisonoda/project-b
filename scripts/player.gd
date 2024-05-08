@@ -5,7 +5,6 @@ class_name Player
 @onready var game_manager: GameManager = %GameManager
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damaged_timer: Timer = $DamagedTimer
-@onready var gun_marker = $GunMarker
 
 var speed = 3000.0
 var max_health = 3
