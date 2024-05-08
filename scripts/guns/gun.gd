@@ -31,8 +31,8 @@ func _process(_delta):
 func shoot():
 	var dir = (get_local_mouse_position() - position).normalized()
 	var proj = projectile.instantiate()
-	proj.setup(dir, shoot_point.position)
-	add_child(proj)
+	proj.setup(dir, shoot_point.global_position)
+	get_tree().root.add_child(proj)
 	ammo -= 1
 	
 	#game_manager.shake()
