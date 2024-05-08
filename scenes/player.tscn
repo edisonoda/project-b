@@ -160,7 +160,11 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_72m1b")
 
 [node name="Rifle" parent="." instance=ExtResource("4_q2l37")]
+projectile_path = "res://scenes/projectiles/rifle_bullet.tscn"
 shoot_path = NodePath("../GunMarker")
+fire_rate = 5.0
+reload_time = 1.5
+max_ammo = 12
 
 [node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
 

@@ -31,7 +31,7 @@ func _process(_delta):
 func shoot():
 	var dir = (get_local_mouse_position() - position).normalized()
 	var proj = projectile.instantiate()
-	proj.setup(dir, shoot_point.global_position)
+	proj.setup(shoot_point.global_position, dir)
 	get_tree().root.add_child(proj)
 	ammo -= 1
 	
@@ -52,3 +52,6 @@ func check_reload():
 
 func on_reload_end():
 	ammo = max_ammo
+
+func delete_bullet(body: Node2D):
+	body.queue_free()

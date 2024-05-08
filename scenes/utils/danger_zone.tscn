@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://botex6haw4fv7"]
 
-[ext_resource type="Script" path="res://scripts/danger_zone.gd" id="1_7l5d5"]
+[ext_resource type="Script" path="res://scripts/utils/danger_zone.gd" id="1_7l5d5"]
 
 [node name="DangerZone" type="Area2D"]
 collision_mask = 2
