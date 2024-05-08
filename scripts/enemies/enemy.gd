@@ -25,3 +25,6 @@ func _physics_process(delta):
 
 func move(_delta):
 	pass
+
+func take_damage(dmg: float = 1):
+	health -= dmg

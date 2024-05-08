@@ -5,9 +5,9 @@ class_name Gun
 @export_global_file(".tscn") var projectile_path: String = "res://scenes/projectiles/rifle_bullet.tscn"
 @export_node_path("Node2D") var reticle_path
 @export_node_path("Marker2D") var shoot_path
-@export var fire_rate: float = 5
+@export var fire_rate: float = 8
 @export var reload_time: float = 1.5
-@export var max_ammo: int = 12
+@export var max_ammo: int = 20
 
 @onready var projectile: Resource = load(projectile_path)
 @onready var reticle: Node2D = get_node(reticle_path)

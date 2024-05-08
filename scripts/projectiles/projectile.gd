@@ -3,7 +3,7 @@ extends Node2D
 class_name Projectile
 
 @export var damage: float = 0.2
-@export var speed: float = 200
+@export var speed: float = 300
 @export var range: float = 300
 
 var direction: Vector2
@@ -22,3 +22,9 @@ func _physics_process(delta):
 
 func change_direction(dir: Vector2):
 	direction = dir
+
+func _on_body_entered(body: Node2D):
+	queue_free()
+	
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
