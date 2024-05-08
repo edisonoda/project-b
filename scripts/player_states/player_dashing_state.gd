@@ -7,7 +7,7 @@ const FRICTION = 2.5
 func _ready():
 	if player.velocity.x > 0:
 		sprite.flip_h = false
-	elif player.velocity.x < 0:
+	else:
 		sprite.flip_h = true
 
 func _physics_process(delta):
@@ -21,4 +21,3 @@ func _physics_process(delta):
 	
 	player.velocity -= velocity
 	sprite.play("dashing")
-

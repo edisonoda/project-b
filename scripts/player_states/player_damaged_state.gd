@@ -1,4 +1,4 @@
-extends PlayerState
+extends PlayerNormalState
 
 class_name PlayerDamagedState
 
@@ -15,10 +15,6 @@ func _ready():
 	
 	blink()
 
-func _process(delta):
-	if Input.is_action_just_pressed("Use Ability"):
-		player.p_class.use_ability()
-
 func blink():
 	if blinked:
 		sprite.modulate.g = 1.0
@@ -29,3 +25,6 @@ func blink():
 	
 	blinked = !blinked
 	blinking_timer.restart()
+
+func receive_damage(_damage):
+	pass

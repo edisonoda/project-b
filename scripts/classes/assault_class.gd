@@ -4,7 +4,7 @@ extends PClass
 
 var dashing_force
 
-func _process(delta):
+func _process(_delta):
 	if not player.state is PlayerDashingState:
 		return
 	

@@ -119,9 +119,9 @@ shape = SubResource("CircleShape2D_72m1b")
 [node name="AssaultClass" parent="." instance=ExtResource("3_0vovb")]
 
 [node name="Rifle" parent="." instance=ExtResource("4_q2l37")]
-shoot_point = NodePath("Marker2D")
+shoot_path = NodePath("../GunMarker")
 
-[node name="Marker2D" type="Marker2D" parent="Rifle"]
+[node name="GunMarker" type="Marker2D" parent="."]
 position = Vector2(5, 1)
 
 [connection signal="timeout" from="DamagedTimer" to="." method="_on_damaged_timer_timeout"]

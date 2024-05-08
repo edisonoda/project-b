@@ -5,6 +5,7 @@ class_name Player
 @onready var game_manager: GameManager = %GameManager
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var damaged_timer: Timer = $DamagedTimer
+@onready var gun_marker = $GunMarker
 
 var speed = 3000.0
 var max_health = 3
@@ -14,7 +15,8 @@ var state: PlayerState
 var state_factory: PlayerStateFactory
 
 #var p_class: PClass
-@onready var p_class: PClass = $"AssaultClass"
+@onready var p_class: PClass = $AssaultClass
+@onready var gun: Gun = $Rifle
 
 func _ready():
 	p_class.update_player(self)
