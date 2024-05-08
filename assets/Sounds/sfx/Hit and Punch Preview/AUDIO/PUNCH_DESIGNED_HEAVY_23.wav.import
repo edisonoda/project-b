@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://f7lpbm5qea08"
+path="res://.godot/imported/PUNCH_DESIGNED_HEAVY_23.wav-4f2878b4e7a10de82c46b0244ed52877.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Hit and Punch Preview/AUDIO/PUNCH_DESIGNED_HEAVY_23.wav"
+dest_files=["res://.godot/imported/PUNCH_DESIGNED_HEAVY_23.wav-4f2878b4e7a10de82c46b0244ed52877.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

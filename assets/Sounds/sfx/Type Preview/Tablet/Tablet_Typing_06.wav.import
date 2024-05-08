@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcv8o4ayrlvxm"
+path="res://.godot/imported/Tablet_Typing_06.wav-55e7a96c37ac45e64a893ad51cd35124.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Type Preview/Tablet/Tablet_Typing_06.wav"
+dest_files=["res://.godot/imported/Tablet_Typing_06.wav-55e7a96c37ac45e64a893ad51cd35124.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b525s5epc5buy"
+path="res://.godot/imported/Hologram Menu Open-2.wav-e7591a284735fb074f0dfae5bf53a47b.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Future UI Preview/Audio/Hologram Menu Open-2.wav"
+dest_files=["res://.godot/imported/Hologram Menu Open-2.wav-e7591a284735fb074f0dfae5bf53a47b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

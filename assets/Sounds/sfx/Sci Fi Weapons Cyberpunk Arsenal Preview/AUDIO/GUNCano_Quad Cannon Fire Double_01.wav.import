@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bed1jlle4nv3k"
+path="res://.godot/imported/GUNCano_Quad Cannon Fire Double_01.wav-34c25f6597f3fbc5571ce2a4722f3ec6.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNCano_Quad Cannon Fire Double_01.wav"
+dest_files=["res://.godot/imported/GUNCano_Quad Cannon Fire Double_01.wav-34c25f6597f3fbc5571ce2a4722f3ec6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

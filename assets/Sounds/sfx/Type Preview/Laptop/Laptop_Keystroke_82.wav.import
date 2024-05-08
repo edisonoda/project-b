@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://oov3rrmq03t0"
+path="res://.godot/imported/Laptop_Keystroke_82.wav-c620aeaf6b4124d892a731835abde8fc.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Type Preview/Laptop/Laptop_Keystroke_82.wav"
+dest_files=["res://.godot/imported/Laptop_Keystroke_82.wav-c620aeaf6b4124d892a731835abde8fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

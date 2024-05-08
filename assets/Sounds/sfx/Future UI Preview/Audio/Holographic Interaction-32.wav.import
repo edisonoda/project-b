@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7d6ctg3s8bvq"
+path="res://.godot/imported/Holographic Interaction-32.wav-5305b25ae6606bd2778bee905a4c099d.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Future UI Preview/Audio/Holographic Interaction-32.wav"
+dest_files=["res://.godot/imported/Holographic Interaction-32.wav-5305b25ae6606bd2778bee905a4c099d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

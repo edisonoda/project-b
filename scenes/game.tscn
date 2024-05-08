@@ -301,3 +301,5 @@ color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
 color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]

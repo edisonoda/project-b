@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu3mbnqj3sro5"]
+[gd_scene load_steps=13 format=3 uid="uid://cu3mbnqj3sro5"]
 
 [ext_resource type="Script" path="res://scripts/guns/gun.gd" id="1_x306o"]
 [ext_resource type="PackedScene" uid="uid://bxrches6f3jyb" path="res://scenes/guns/default_reticle.tscn" id="2_g8yp5"]
 [ext_resource type="Texture2D" uid="uid://bpq3lb7xtrirp" path="res://assets/Guns/rifle.png" id="3_kgptn"]
 [ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="4_qvi5d"]
 [ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="5_aeeby"]
+[ext_resource type="AudioStream" uid="uid://bondqyo6wp0nj" path="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNAuto_Assault Rifle A Fire_01.wav" id="6_wrd1w"]
+[ext_resource type="AudioStream" uid="uid://vscpud5oxkkp" path="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNMech_Insert Clip_04.wav" id="7_xtyl4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
 atlas = ExtResource("5_aeeby")
@@ -47,7 +49,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shooting",
-"speed": 30.0
+"speed": 40.0
 }]
 
 [node name="Rifle" type="Node2D"]
@@ -57,6 +59,8 @@ reticle_path = NodePath("DefaultReticle")
 shoot_path = NodePath("GunMarker")
 animation_path = NodePath("GunMarker/FiringAnimation")
 light_path = NodePath("GunMarker/FiringLight")
+shooting_audio_player_path = NodePath("GunMarker/ShootingPlayer")
+reload_audio_player_path = NodePath("GunMarker/ReloadPlayer")
 
 [node name="DefaultReticle" parent="." instance=ExtResource("2_g8yp5")]
 
@@ -71,13 +75,23 @@ position = Vector2(9, -1)
 position = Vector2(3, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mmjwo")
-animation = &"not_shooting"
+animation = &"shooting"
 autoplay = "not_shooting"
+frame = 3
+frame_progress = 1.0
 
 [node name="FiringLight" type="PointLight2D" parent="GunMarker"]
 position = Vector2(3, 0)
-scale = Vector2(0.0859375, 0.0859375)
+scale = Vector2(0.1, 0.1)
 enabled = false
-color = Color(1, 1, 0, 1)
-energy = 5.0
+color = Color(1, 0.737255, 0, 1)
+energy = 3.0
 texture = ExtResource("4_qvi5d")
+
+[node name="ShootingPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
+stream = ExtResource("6_wrd1w")
+bus = &"Shooting"
+
+[node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
+stream = ExtResource("7_xtyl4")
+bus = &"SFX"

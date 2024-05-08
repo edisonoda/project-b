@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://g4la7f3w16fw"
+path="res://.godot/imported/HIT_SHORT_04.wav-90b6b3e0d5557de1b6d4487a353ee890.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Hit and Punch Preview/AUDIO/HIT_SHORT_04.wav"
+dest_files=["res://.godot/imported/HIT_SHORT_04.wav-90b6b3e0d5557de1b6d4487a353ee890.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

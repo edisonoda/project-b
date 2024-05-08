@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cj1cwammf5yil"
+path="res://.godot/imported/SCIEnrg_Shield Activate Deactivate_02.wav-1b1d811921497805bde9ed4918a366cc.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/SCIEnrg_Shield Activate Deactivate_02.wav"
+dest_files=["res://.godot/imported/SCIEnrg_Shield Activate Deactivate_02.wav-1b1d811921497805bde9ed4918a366cc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

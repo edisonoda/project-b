@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjq81c6g5y6q2"]
+
+[ext_resource type="AudioStream" uid="uid://crb58e3ha6o7q" path="res://assets/Sounds/soundtrack/SwitchWithMeTheme_Loopable.wav" id="1_4x4nb"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_4x4nb")
+autoplay = true
+bus = &"Music"
