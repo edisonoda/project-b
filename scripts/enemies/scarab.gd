@@ -8,7 +8,10 @@ class_name Scarab
 
 @onready var danger_zone: Area2D = $DangerZone
 @onready var charge_area: Area2D = $ChargeArea
-@onready var retreat_area = $RetreatArea
+@onready var retreat_area: Area2D = $RetreatArea
+
+@onready var growl: AudioStreamPlayer2D = $Growl
+@onready var step: AudioStreamPlayer2D = $Step
 
 var state: ScarabState
 var state_factory: ScarabStateFactory
@@ -30,6 +33,10 @@ func die():
 	super()
 
 func change_state(new_state_name: String):
+	#To prevent bug when Scarab dies while retreating
+	if health <= 0:
+		return
+	
 	if state != null:
 		state.queue_free()
 	state = state_factory.get_state(new_state_name).new()

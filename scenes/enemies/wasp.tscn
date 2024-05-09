@@ -1,10 +1,12 @@
-[gd_scene load_steps=24 format=3 uid="uid://x7fla26eq33m"]
+[gd_scene load_steps=26 format=3 uid="uid://x7fla26eq33m"]
 
 [ext_resource type="Script" path="res://scripts/enemies/wasp.gd" id="1_0cymc"]
 [ext_resource type="Texture2D" uid="uid://bmyhm6rk2m2qu" path="res://assets/Effects/small-fragments.png" id="2_bmcts"]
 [ext_resource type="Shader" path="res://shaders/flash_white_shader.gdshader" id="2_qlx8v"]
 [ext_resource type="Texture2D" uid="uid://bpkmfhe3wojk8" path="res://assets/Robots/Wasp.png" id="2_vh6n8"]
 [ext_resource type="PackedScene" uid="uid://botex6haw4fv7" path="res://scenes/utils/danger_zone.tscn" id="3_x6fkj"]
+[ext_resource type="AudioStream" uid="uid://c7lp01pulrn2d" path="res://assets/Sounds/sfx/Robots/WaspWing.wav" id="6_7uxbk"]
+[ext_resource type="AudioStream" uid="uid://byrhjardtkt6y" path="res://assets/Sounds/sfx/Robots/Wasp.wav" id="6_t43fx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bew52"]
 resource_local_to_scene = true
@@ -156,3 +158,23 @@ shape = SubResource("CircleShape2D_glllb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8pepm")
+
+[node name="Flapping" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7uxbk")
+volume_db = -35.0
+pitch_scale = 9.0
+autoplay = true
+max_distance = 70.0
+attenuation = 1.51572
+panning_strength = 2.0
+bus = &"SFX"
+
+[node name="Droning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_t43fx")
+volume_db = -40.0
+pitch_scale = 8.0
+autoplay = true
+max_distance = 70.0
+attenuation = 1.8025
+panning_strength = 2.0
+bus = &"SFX"

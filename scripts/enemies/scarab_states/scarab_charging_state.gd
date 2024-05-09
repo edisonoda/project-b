@@ -3,6 +3,7 @@ extends ScarabState
 class_name ScarabChargingState
 
 func _ready():
+	scarab.growl.play()
 	sprite.play("preparing_attack")
 	sprite.animation_finished.connect(attack)
 

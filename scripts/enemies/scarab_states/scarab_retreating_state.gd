@@ -18,9 +18,5 @@ func move(delta: float):
 		scarab.velocity = scarab.velocity.limit_length(scarab.speed)
 
 func chase(_body: Node2D):
-	#To prevent bug when Scarab dies while retreating
-	if scarab.health <= 0:
-		return
-	
 	scarab.retreat_area.body_exited.disconnect(chase)
 	scarab.change_state("chasing")
