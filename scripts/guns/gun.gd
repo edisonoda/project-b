@@ -13,6 +13,7 @@ const MAX_PITCH = 3
 @export_node_path("PointLight2D") var light_path
 @export_node_path("AudioStreamPlayer2D") var shooting_audio_player_path
 @export_node_path("AudioStreamPlayer2D") var reload_audio_player_path
+@export_node_path("RadialProgress") var reload_progress_path
 @export var fire_rate: float = 8
 @export var reload_time: float = 1.5
 @export var max_ammo: int = 20
@@ -26,6 +27,7 @@ const MAX_PITCH = 3
 @onready var light: PointLight2D = get_node(light_path)
 @onready var shooting_audio_player: AudioStreamPlayer2D = get_node(shooting_audio_player_path)
 @onready var reload_audio_player: AudioStreamPlayer2D = get_node(reload_audio_player_path)
+@onready var reload_progress: RadialProgress = get_node(reload_progress_path)
 
 var fire_rate_timer: Repeater = Repeater.new()
 var reload_timer: Repeater = Repeater.new()
@@ -36,11 +38,13 @@ var ammo: int = max_ammo
 func _ready():
 	setup()
 
-func _process(_delta):
+func _process(delta):
 	var mouse = get_global_mouse_position()
 	reticle.global_position = mouse
-	
 	look_at(mouse)
+	
+	if reload_timer.running:
+		reload_progress.progress += (1 / reload_time) * delta * 100
 
 func setup():
 	fire_rate_timer.setup(self, 1 / fire_rate)
@@ -48,21 +52,16 @@ func setup():
 	reload_timer.timeout.connect(on_reload_end)
 	
 	reload_pitch_scale = clamp(reload_stream.get_length() / reload_time, 0.75, 1.25)
-	print(reload_pitch_scale)
 
 func shoot():
-	light.enabled = true
-	
-	var stop_shooting = func():
-		animation.play("not_shooting")
-		light.enabled = false
-	
+	var stop_shooting = func(): animation.play("not_shooting")
 	animation.animation_finished.connect(stop_shooting)
 	animation.play("shooting")
 	shooting_audio_player.play()
 	
 	#GameManager.shake_camera()
 	spawn_bullet()
+	flash_light()
 	if ammo <= 0:
 		reload()
 	else:
@@ -74,6 +73,11 @@ func spawn_bullet():
 	proj.setup(shoot_point.global_position, dir)
 	get_tree().root.add_child(proj)
 	ammo -= 1
+
+func flash_light():
+	light.enabled = true
+	await get_tree().create_timer(0.1).timeout
+	light.enabled = false
 
 func reload():
 	reload_audio_player.stream = reload_stream
@@ -91,6 +95,7 @@ func on_reload_end():
 	reload_audio_player.stream = finished_reload_stream
 	reload_audio_player.pitch_scale = 1
 	reload_audio_player.play()
+	reload_progress.progress = 0
 	ammo = max_ammo
 
 func delete_bullet(body: Node2D):

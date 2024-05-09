@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu3mbnqj3sro5"]
+[gd_scene load_steps=14 format=3 uid="uid://cu3mbnqj3sro5"]
 
 [ext_resource type="Script" path="res://scripts/guns/gun.gd" id="1_x306o"]
 [ext_resource type="PackedScene" uid="uid://bxrches6f3jyb" path="res://scenes/guns/default_reticle.tscn" id="2_g8yp5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="5_aeeby"]
 [ext_resource type="AudioStream" uid="uid://bondqyo6wp0nj" path="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNAuto_Assault Rifle A Fire_01.wav" id="6_wrd1w"]
 [ext_resource type="AudioStream" uid="uid://vscpud5oxkkp" path="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNMech_Insert Clip_04.wav" id="7_xtyl4"]
+[ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="8_011f6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
 atlas = ExtResource("5_aeeby")
@@ -61,6 +62,7 @@ animation_path = NodePath("GunMarker/FiringAnimation")
 light_path = NodePath("GunMarker/FiringLight")
 shooting_audio_player_path = NodePath("GunMarker/ShootingPlayer")
 reload_audio_player_path = NodePath("GunMarker/ReloadPlayer")
+reload_progress_path = NodePath("ReloadProgress")
 
 [node name="DefaultReticle" parent="." instance=ExtResource("2_g8yp5")]
 
@@ -75,17 +77,15 @@ position = Vector2(9, -1)
 position = Vector2(3, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_mmjwo")
-animation = &"shooting"
+animation = &"not_shooting"
 autoplay = "not_shooting"
-frame = 3
-frame_progress = 1.0
 
 [node name="FiringLight" type="PointLight2D" parent="GunMarker"]
 position = Vector2(3, 0)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.15, 0.15)
 enabled = false
 color = Color(1, 0.737255, 0, 1)
-energy = 3.0
+energy = 2.5
 texture = ExtResource("4_qvi5d")
 
 [node name="ShootingPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
@@ -95,3 +95,20 @@ bus = &"Shooting"
 [node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
 stream = ExtResource("7_xtyl4")
 bus = &"SFX"
+
+[node name="ReloadProgress" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -5.33333
+offset_top = -5.33333
+offset_right = -5.33333
+offset_bottom = -5.33333
+scale = Vector2(0.02, 0.02)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("8_011f6")
+thickness = 50.0
+bg_color = Color(0.501961, 0.501961, 0.501961, 0)
+bar_color = Color(0, 1, 0, 1)
+ring = true
+nb_points = 64
