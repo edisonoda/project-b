@@ -135,6 +135,9 @@ floor_stop_on_slope = false
 floor_block_on_wall = false
 script = ExtResource("1_0cymc")
 sprite_path = NodePath("AnimatedSprite2D")
+speed = 70.0
+health = 2.0
+weight = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bew52")

@@ -11,7 +11,7 @@ const KNOCKBACK_FORCE = 750.0
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-func global_knockback(position: Vector2):
+func global_knockback():
 	var children = enemies.get_children()
 	var acceleration
 	var direction
@@ -20,7 +20,7 @@ func global_knockback(position: Vector2):
 		acceleration = KNOCKBACK_FORCE/child.get_weight()
 		direction = player.position.direction_to(child.position)
 		child.velocity = Vector2(acceleration * direction.x, acceleration * direction.y)
-		child.knockback_staggered = true
+		child.ilimited_speed = true
 
 func game_over():
 	game_over_timer.start()

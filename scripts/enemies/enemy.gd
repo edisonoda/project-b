@@ -13,19 +13,19 @@ class_name Enemy
 @onready var player: Player = %Player
 @onready var sprite: AnimatedSprite2D = get_node(sprite_path)
 
-var knockback_staggered: bool = false
+var ilimited_speed: bool = false
 
 func get_weight() -> float:
 	return weight
 
 func _physics_process(delta):
 	if velocity.length() < speed:
-		knockback_staggered = false
+		ilimited_speed = false
 	
 	move(delta)
 	move_and_slide()
 
-func move(_delta):
+func move(_delta: float):
 	pass
 
 func take_damage(dmg: float = 1):
@@ -33,11 +33,14 @@ func take_damage(dmg: float = 1):
 	flash_white()
 	
 	if health <= 0:
-		sprite.play("death")
+		die()
+
+func die():
+	sprite.play("death")
 		
-		if not sprite.animation_finished.is_connected(queue_free):
-			sprite.animation_finished.connect(queue_free)
-			disable_colliders()
+	if not sprite.animation_finished.is_connected(queue_free):
+		sprite.animation_finished.connect(queue_free)
+		disable_colliders()
 
 func flash_white():
 	var material = sprite.material
