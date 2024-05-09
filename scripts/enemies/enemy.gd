@@ -37,7 +37,7 @@ func take_damage(dmg: float = 1):
 
 func die():
 	sprite.play("death")
-		
+	
 	if not sprite.animation_finished.is_connected(queue_free):
 		sprite.animation_finished.connect(queue_free)
 		disable_colliders()

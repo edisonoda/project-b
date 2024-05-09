@@ -18,5 +18,12 @@ func _ready():
 	timer.start()
 
 func start_chasing():
+	sprite.speed_scale = 1
+	scarab.speed -= speed_difference
+	scarab.acceleration += acc_difference
 	scarab.ilimited_speed = true
-	scarab.change_state("chasing")
+	
+	if scarab.retreat_area.overlaps_body(player):
+		scarab.change_state("retreating")
+	else:
+		scarab.change_state("chasing")

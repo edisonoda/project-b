@@ -6,10 +6,6 @@ const FRICTION = 5
 
 func _ready():
 	sprite.play("walking")
-	sprite.speed_scale = 1
-	
-	scarab.speed -= speed_difference
-	scarab.acceleration += acc_difference
 	scarab.danger_zone.monitoring = false
 	
 	scarab.charge_area.body_entered.connect(charge)
@@ -28,4 +24,5 @@ func _physics_process(delta):
 	scarab.velocity -= velocity
 
 func charge(_body: Node2D):
+	scarab.charge_area.body_entered.disconnect(charge)
 	scarab.change_state("charging")

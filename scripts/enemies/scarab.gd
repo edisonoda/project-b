@@ -8,6 +8,7 @@ class_name Scarab
 
 @onready var danger_zone: Area2D = $DangerZone
 @onready var charge_area: Area2D = $ChargeArea
+@onready var retreat_area = $RetreatArea
 
 var state: ScarabState
 var state_factory: ScarabStateFactory

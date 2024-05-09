@@ -5,6 +5,7 @@ var states
 func _init():
 	states = {
 		"chasing": ScarabChasingState,
+		"retreating": ScarabRetreatingState,
 		"charging": ScarabChargingState,
 		"attacking": ScarabAttackingState
 	}
