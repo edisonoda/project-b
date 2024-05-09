@@ -2,8 +2,8 @@ extends Node2D
 
 class_name Projectile
 
-@export var damage: float = 0.2
-@export var speed: float = 300
+@export var damage: float = 0.4
+@export var speed: float = 350
 @export var range: float = 300
 
 var direction: Vector2

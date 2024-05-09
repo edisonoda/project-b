@@ -1,8 +1,8 @@
-extends Node
+extends Node2D
 
-class_name PClass
+class_name BaseClass
 
-@export_file("*.png") var sheet: String = "res://assets/Soldiers/Assault-Class.png"
+@export_file("*.tres") var sheet: String = "res://assets/Soldiers/assault_frames.tres"
 @export var health: int = 3
 @export var speed: float = 3000.0
 @export var ability_cooldown: float = 2.0

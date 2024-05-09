@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/classes/assault_class.gd" id="1_0rrcv"]
 
-[node name="AssaultClass" type="Node"]
+[node name="AssaultClass" type="Node2D"]
 script = ExtResource("1_0rrcv")

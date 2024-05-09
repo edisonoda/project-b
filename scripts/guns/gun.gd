@@ -14,7 +14,7 @@ const MAX_PITCH = 3
 @export_node_path("AudioStreamPlayer2D") var shooting_audio_player_path
 @export_node_path("AudioStreamPlayer2D") var reload_audio_player_path
 @export_node_path("RadialProgress") var reload_progress_path
-@export var fire_rate: float = 8
+@export var fire_rate: float = 5
 @export var reload_time: float = 1.5
 @export var max_ammo: int = 20
 

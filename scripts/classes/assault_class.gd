@@ -1,4 +1,6 @@
-extends PClass
+extends BaseClass
+
+class_name AssaultClass
 
 @export var force_ratio: float = 0.05
 
