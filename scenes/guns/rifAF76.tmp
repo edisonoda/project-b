@@ -56,6 +56,14 @@ animations = [{
 [node name="Rifle" type="Node2D" node_paths=PackedStringArray("reticle", "shoot_point", "animation", "light", "shooting_audio_player", "reload_audio_player", "reload_progress")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_x306o")
+projectile_path = null
+reload_stream_path = null
+finished_reload_stream_path = null
+fire_rate = null
+reload_time = null
+max_ammo = null
+bullets_shot = null
+spread = null
 reticle = NodePath("DefaultReticle")
 shoot_point = NodePath("GunMarker")
 animation = NodePath("GunMarker/FiringAnimation")
