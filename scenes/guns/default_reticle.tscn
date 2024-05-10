@@ -1,8 +1,150 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxrches6f3jyb"]
+[gd_scene load_steps=6 format=3 uid="uid://bxrches6f3jyb"]
 
 [ext_resource type="Texture2D" uid="uid://6fidiyhoputy" path="res://assets/Reticles/default_reticle.png" id="1_5shtg"]
+[ext_resource type="Script" path="res://scripts/guns/reticle.gd" id="1_uxnpf"]
 
-[node name="DefaultReticle" type="Sprite2D"]
+[sub_resource type="Animation" id="Animation_pu6o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultReticle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DefaultReticle2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DefaultReticle3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DefaultReticle4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_7ynbq"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DefaultReticle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-3, 0), Vector2(-7, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DefaultReticle2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 0), Vector2(7, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DefaultReticle3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -3), Vector2(0, -7)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DefaultReticle4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 3), Vector2(0, 7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qdff"]
+_data = {
+"RESET": SubResource("Animation_pu6o2"),
+"shoot": SubResource("Animation_7ynbq")
+}
+
+[node name="Reticle" type="Node2D"]
 z_index = 10
+z_as_relative = false
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_uxnpf")
+
+[node name="DefaultReticle" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(-3, 0)
+rotation = 1.5708
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_5shtg")
+
+[node name="DefaultReticle2" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(3, 0)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_5shtg")
+
+[node name="DefaultReticle3" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, -3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_5shtg")
+
+[node name="DefaultReticle4" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_5shtg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
+libraries = {
+"": SubResource("AnimationLibrary_1qdff")
+}

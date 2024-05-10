@@ -3,7 +3,7 @@ extends ScarabChasingState
 class_name ScarabRetreatingState
 
 func _ready():
-	sprite.play("walking")
+	sprite.play_backwards("walking")
 	scarab.danger_zone.monitoring = false
 	
 	scarab.retreat_area.body_exited.connect(chase)

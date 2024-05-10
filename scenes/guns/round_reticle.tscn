@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://delppurav0vxq"]
+
+[ext_resource type="Script" path="res://scripts/guns/reticle.gd" id="1_r6gxe"]
+[ext_resource type="Script" path="res://scripts/utils/ring.gd" id="2_nh2o6"]
+[ext_resource type="Texture2D" uid="uid://cac2g5gpp6bro" path="res://assets/UI/range-grid.png" id="3_2s08t"]
+
+[sub_resource type="Animation" id="Animation_pu6o2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_7ynbq"]
+resource_name = "shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ring:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [5.0, 9.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1qdff"]
+_data = {
+"RESET": SubResource("Animation_pu6o2"),
+"shoot": SubResource("Animation_7ynbq")
+}
+
+[node name="Reticle" type="Node2D"]
+z_index = 10
+z_as_relative = false
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_r6gxe")
+max_shots = 2
+
+[node name="Ring" type="Node2D" parent="."]
+script = ExtResource("2_nh2o6")
+radius = 5.0
+thickness = 1.0
+color = Color(1, 1, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_2s08t")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 2
+libraries = {
+"": SubResource("AnimationLibrary_1qdff")
+}

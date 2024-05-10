@@ -2,16 +2,15 @@ extends CharacterBody2D
 
 class_name Enemy
 
-@export_node_path("AnimatedSprite2D") var sprite_path
+@export var sprite: AnimatedSprite2D
 @export var speed: float = 40
 @export var acceleration: float = 100.0
 @export var player_distance: float = 5.0
 @export var health: float = 3.0
-@export var weight: float = 5.0
+@export var weight: float = 100.0
 @export var exp_points: float = 10.0
 
 @onready var player: Player = %Player
-@onready var sprite: AnimatedSprite2D = get_node(sprite_path)
 
 var ilimited_speed: bool = false
 
@@ -43,12 +42,12 @@ func die():
 		disable_colliders()
 
 func flash_white():
-	var material = sprite.material
+	var shader = sprite.material
 	
-	if material is ShaderMaterial:
-		material.set_shader_parameter("white", true)
+	if shader is ShaderMaterial:
+		shader.set_shader_parameter("white", true)
 		await get_tree().create_timer(0.1).timeout
-		material.set_shader_parameter("white", false)
+		shader.set_shader_parameter("white", false)
 
 func disable_colliders():
 	for collision_shape: CollisionShape2D in find_children("CollisionShape2D"):

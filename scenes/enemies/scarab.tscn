@@ -167,7 +167,7 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_gi3ib"]
 radius = 150.0
 
-[node name="Scarab" type="CharacterBody2D"]
+[node name="Scarab" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 4
 collision_mask = 4
 motion_mode = 1
@@ -177,11 +177,10 @@ floor_block_on_wall = false
 platform_on_leave = 2
 platform_wall_layers = 4
 script = ExtResource("1_bywjx")
-sprite_path = NodePath("AnimatedSprite2D")
+sprite = NodePath("AnimatedSprite2D")
 speed = 10.0
 acceleration = 70.0
 health = 8.0
-weight = 15.0
 exp_points = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -225,4 +224,4 @@ stream = ExtResource("7_oha7l")
 volume_db = 5.0
 pitch_scale = 0.5
 max_distance = 150.0
-attenuation = 3.03143
+attenuation = 1.8025

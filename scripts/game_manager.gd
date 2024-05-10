@@ -2,7 +2,7 @@ extends Node2D
 
 class_name GameManager
 
-const KNOCKBACK_FORCE = 750.0
+const KNOCKBACK_FORCE = 7500.0
 
 @onready var game_over_timer = $GameOverTimer
 @onready var enemies = %Enemies
