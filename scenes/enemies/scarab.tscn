@@ -1,10 +1,11 @@
-[gd_scene load_steps=31 format=3 uid="uid://vwjw1m36ibwf"]
+[gd_scene load_steps=33 format=3 uid="uid://vwjw1m36ibwf"]
 
 [ext_resource type="Script" path="res://scripts/enemies/scarab.gd" id="1_bywjx"]
 [ext_resource type="Shader" path="res://shaders/flash_white_shader.gdshader" id="2_p3d3p"]
 [ext_resource type="Texture2D" uid="uid://bmyhm6rk2m2qu" path="res://assets/Effects/small-fragments.png" id="3_1k2im"]
 [ext_resource type="Texture2D" uid="uid://db7tivgemfy88" path="res://assets/Robots/Scarab.png" id="4_7dofd"]
 [ext_resource type="PackedScene" uid="uid://botex6haw4fv7" path="res://scenes/utils/danger_zone.tscn" id="5_4gh3n"]
+[ext_resource type="Script" path="res://scripts/utils/sprite_light_occluder.gd" id="5_rndt0"]
 [ext_resource type="AudioStream" uid="uid://0egsh2ph3g5m" path="res://assets/Sounds/sfx/Robots/ScarabGrowl.wav" id="6_0xded"]
 [ext_resource type="AudioStream" uid="uid://bky8ef17sxyw8" path="res://assets/Sounds/sfx/Robots/ScarabStep.wav" id="7_oha7l"]
 
@@ -155,6 +156,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uh2m6"]
+polygon = PackedVector2Array(-5, 1, -3, 3, 4, 3, 6, 1)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8pepm"]
 radius = 4.0
 
@@ -189,6 +193,11 @@ sprite_frames = SubResource("SpriteFrames_v40ap")
 animation = &"walking"
 autoplay = "walking"
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+occluder = SubResource("OccluderPolygon2D_uh2m6")
+script = ExtResource("5_rndt0")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8pepm")
 
@@ -199,6 +208,7 @@ monitoring = false
 shape = SubResource("CircleShape2D_glllb")
 
 [node name="ChargeArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -206,6 +216,7 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_lr084")
 
 [node name="RetreatArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

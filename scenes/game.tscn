@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://djb4k1bsx23e6"]
+[gd_scene load_steps=10 format=3 uid="uid://djb4k1bsx23e6"]
 
 [ext_resource type="Texture2D" uid="uid://cmhc4jya2lvcq" path="res://assets/Tileset/tileset_arranged.png" id="1_ddr38"]
 [ext_resource type="PackedScene" uid="uid://uisw7olibfma" path="res://scenes/player.tscn" id="2_k8vjt"]
@@ -241,6 +241,14 @@ texture = ExtResource("1_ddr38")
 [sub_resource type="TileSet" id="TileSet_lnd6q"]
 sources/0 = SubResource("TileSetAtlasSource_f3poe")
 
+[sub_resource type="Environment" id="Environment_tjqpf"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 3.0
+glow_strength = 1.2
+glow_blend_mode = 1
+adjustment_enabled = true
+
 [node name="Game" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
@@ -251,6 +259,7 @@ script = ExtResource("3_74cfe")
 one_shot = true
 
 [node name="TileMap" type="TileMap" parent="."]
+light_mask = 2
 tile_set = SubResource("TileSet_lnd6q")
 format = 2
 layer_0/name = "background"
@@ -258,11 +267,14 @@ layer_0/tile_data = PackedInt32Array(-3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0,
 layer_1/name = "paths"
 layer_1/tile_data = PackedInt32Array(-7, 0, 6, -6, 0, 6, -5, 0, 6, -4, 0, 6, -3, 0, 6, -2, 0, 6, -1, 0, 6, -65536, 0, 6, -65535, 0, 6, -65534, 0, 6, -65533, 0, 6, -65532, 0, 6, -65531, 0, 6, -65530, 0, 6, -65529, 0, 6, -65528, 0, 6, -65527, 0, 6, -65526, 0, 6, -65525, 0, 6, 7, 0, 7, 8, 0, 7, 9, 0, 7, 10, 0, 7, 11, 0, 7, 65525, 0, 7, 65526, 0, 7, 65527, 0, 7, -11, 0, 6, -10, 0, 6, -9, 0, 6, -8, 0, 6, -12, 0, 6, -13, 0, 6, -14, 0, 6, -15, 0, 6, -16, 0, 6, -17, 0, 6, -18, 0, 6, -19, 0, 6, -20, 0, 6, -21, 0, 6, -22, 0, 6, -23, 0, 6, -24, 0, 6, -25, 0, 6, -26, 0, 6, -27, 0, 6, -28, 0, 6, -29, 0, 6, -30, 0, 6, -31, 0, 6, -32, 0, 6, -33, 0, 6, -34, 0, 6, -65524, 0, 6, -65523, 0, 6, -65522, 0, 6, -65521, 0, 6, -65520, 0, 6, -65519, 0, 6, -65518, 0, 6, -65517, 0, 6, -65516, 0, 6, -65515, 0, 6, -65514, 0, 6, -65513, 0, 6, -65512, 0, 6, -65511, 0, 6, -65510, 0, 6, -65509, 0, 6, -65508, 0, 6, -65507, 0, 6, -65506, 0, 6, -65505, 0, 6, -65504, 0, 6, -65503, 0, 6, -65502, 0, 6, 65502, 0, 7, 65503, 0, 7, 65504, 0, 7, 65505, 0, 7, 65506, 0, 7, 65507, 0, 7, 65508, 0, 7, 65509, 0, 7, 65510, 0, 7, 65511, 0, 7, 65512, 0, 7, 65513, 0, 7, 65514, 0, 7, 65515, 0, 7, 65516, 0, 7, 65517, 0, 7, 65518, 0, 7, 65519, 0, 7, 65520, 0, 7, 65521, 0, 7, 65522, 0, 7, 65523, 0, 7, 65524, 0, 7, 65528, 0, 7, 65529, 0, 7, 65530, 0, 7, 65531, 0, 7, 65532, 0, 7, 65533, 0, 7, 65534, 0, 7, 65535, 0, 7, 0, 0, 7, 1, 0, 7, 2, 0, 7, 3, 0, 7, 4, 0, 7, 5, 0, 7, 6, 0, 7, 12, 0, 7, 13, 0, 7, 14, 0, 7, 15, 0, 7, 16, 0, 7, 17, 0, 7, 18, 0, 7, 19, 0, 7, 20, 0, 7, 21, 0, 7, 22, 0, 7, 23, 0, 7, 24, 0, 7, 25, 0, 7, 26, 0, 7, 27, 0, 7, 28, 0, 7, 29, 0, 7, 30, 0, 7, 31, 0, 7, 32, 0, 7, 33, 0, 7, 34, 0, 7)
 
-[node name="Player" parent="." instance=ExtResource("2_k8vjt")]
+[node name="Entities" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Entities" instance=ExtResource("2_k8vjt")]
 unique_name_in_owner = true
 position = Vector2(-40, -7)
 
-[node name="Camera" type="Camera2D" parent="Player"]
+[node name="Camera" type="Camera2D" parent="Entities/Player"]
 unique_name_in_owner = true
 zoom = Vector2(3, 3)
 limit_left = -544
@@ -272,50 +284,71 @@ limit_bottom = 96
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
+[node name="PointLight2D" type="PointLight2D" parent="Entities/Player"]
 color = Color(0.588235, 0.588235, 0.588235, 1)
 texture = ExtResource("4_6uohf")
 texture_scale = 2.0
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node" parent="Entities"]
 unique_name_in_owner = true
 
-[node name="Wasp" parent="Enemies" instance=ExtResource("4_o47pt")]
-position = Vector2(121, -4)
+[node name="Wasp" parent="Entities/Enemies" instance=ExtResource("4_o47pt")]
+position = Vector2(114, 11)
 
-[node name="Wasp2" parent="Enemies" instance=ExtResource("4_o47pt")]
+[node name="Wasp2" parent="Entities/Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-6, 77)
 
-[node name="Wasp3" parent="Enemies" instance=ExtResource("4_o47pt")]
+[node name="Wasp3" parent="Entities/Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(62, -85)
 
-[node name="Wasp4" parent="Enemies" instance=ExtResource("4_o47pt")]
+[node name="Wasp4" parent="Entities/Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-193, 45)
 
-[node name="Wasp5" parent="Enemies" instance=ExtResource("4_o47pt")]
+[node name="Wasp5" parent="Entities/Enemies" instance=ExtResource("4_o47pt")]
 position = Vector2(-164, -59)
 
-[node name="Scarab" parent="Enemies" instance=ExtResource("6_jcb53")]
+[node name="Scarab" parent="Entities/Enemies" instance=ExtResource("6_jcb53")]
 position = Vector2(148, -71)
 
-[node name="Scarab2" parent="Enemies" instance=ExtResource("6_jcb53")]
+[node name="Scarab2" parent="Entities/Enemies" instance=ExtResource("6_jcb53")]
 position = Vector2(-236, -98)
 
-[node name="Scarab3" parent="Enemies" instance=ExtResource("6_jcb53")]
-position = Vector2(-28, -143)
+[node name="Scarab3" parent="Entities/Enemies" instance=ExtResource("6_jcb53")]
+position = Vector2(-355, -16)
 
-[node name="Scarab4" parent="Enemies" instance=ExtResource("6_jcb53")]
+[node name="Scarab4" parent="Entities/Enemies" instance=ExtResource("6_jcb53")]
 position = Vector2(329, 22)
 
-[node name="Scarab5" parent="Enemies" instance=ExtResource("6_jcb53")]
+[node name="Scarab5" parent="Entities/Enemies" instance=ExtResource("6_jcb53")]
 position = Vector2(367, -96)
 
-[node name="Lighting" type="Node" parent="."]
+[node name="Lighting" type="Node" parent="Entities"]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="Lighting"]
+[node name="CanvasModulate" type="CanvasModulate" parent="Entities/Lighting"]
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Lighting"]
-color = Color(0.392157, 0.392157, 0.392157, 1)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="Entities/Lighting"]
+rotation = 0.523599
+energy = 0.2
+height = 1.0
+
+[node name="DefaultBulb" type="Node2D" parent="Entities/Lighting"]
+position = Vector2(-40, -6)
+
+[node name="Light" type="PointLight2D" parent="Entities/Lighting/DefaultBulb"]
+energy = 0.5
+texture = ExtResource("4_6uohf")
+height = 30.0
+
+[node name="Shadow" type="PointLight2D" parent="Entities/Lighting/DefaultBulb"]
+energy = 0.5
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("4_6uohf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tjqpf")
 
 [connection signal="timeout" from="GameManager/GameOverTimer" to="GameManager" method="_on_game_over_timer_timeout"]

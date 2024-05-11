@@ -21,13 +21,13 @@ class_name Circle
 @export var nb_points: int = 32
 
 func _draw() -> void:
-	draw_ring(Vector2.ZERO, radius, radius-thickness, 0.0, TAU, color)
+	draw_ring(Vector2.ZERO, radius, radius-thickness, 0.0, TAU)
 
 func _process(_delta: float) -> void:
 	queue_redraw()
 
 func draw_ring(center: Vector2, radius1: float, radius2: float,\
-		angle_from: float, angle_to: float, color: Color) -> void:
+		angle_from: float, angle_to: float) -> void:
 	var points_arc := PackedVector2Array()
 	var colors := PackedColorArray([color])
 	var a: float = angle_from - (PI / 2.0)

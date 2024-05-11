@@ -90,10 +90,11 @@ autoplay = "not_shooting"
 
 [node name="FiringLight" type="PointLight2D" parent="GunMarker"]
 position = Vector2(4, 0)
-scale = Vector2(0.15, 0.15)
-enabled = false
+scale = Vector2(0.3, 0.3)
 color = Color(1, 0.737255, 0, 1)
-energy = 2.5
+energy = 1.2
+range_item_cull_mask = 3
+shadow_enabled = true
 texture = ExtResource("5_bvjpj")
 
 [node name="ShootingPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]

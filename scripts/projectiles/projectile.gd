@@ -11,6 +11,7 @@ var distance_traveled: float = 0
 
 func setup(origin: Vector2, ang: float):
 	position = origin
+	rotation = ang
 	direction = Vector2(cos(ang), sin(ang))
 
 func _physics_process(delta):

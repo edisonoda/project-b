@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://btbpmvden7o40"]
+[gd_scene load_steps=6 format=3 uid="uid://btbpmvden7o40"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/projectile.gd" id="1_opjce"]
 [ext_resource type="Texture2D" uid="uid://d4itu84r0a8wn" path="res://assets/Projectiles/bullets+plasma.png" id="2_4xxwr"]
+[ext_resource type="PackedScene" uid="uid://bwridmhp466gg" path="res://scenes/projectiles/trail.tscn" id="3_k47mr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4ekg"]
 radius = 2.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ppq6r"]
+polygon = PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1)
 
 [node name="RifleBullet" type="Area2D"]
 collision_layer = 16
@@ -12,11 +16,17 @@ collision_mask = 4
 script = ExtResource("1_opjce")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 texture = ExtResource("2_4xxwr")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_q4ekg")
+
+[node name="Trail" parent="." instance=ExtResource("3_k47mr")]
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_ppq6r")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
