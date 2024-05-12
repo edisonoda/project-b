@@ -9,6 +9,9 @@ func _process(_delta):
 	if Input.is_action_pressed("Shoot") and player.gun.check_shoot():
 		player.gun.shoot()
 	
+	if Input.is_action_just_pressed("Dash"):
+		player.p_class.use_dash()
+	
 	if Input.is_action_just_pressed("Use Ability"):
 		player.p_class.use_ability()
 
