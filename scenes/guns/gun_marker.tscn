@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://cw6o3lw641oib"]
+
+[ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="1_cfymm"]
+[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="2_6kqby"]
+[ext_resource type="AudioStream" uid="uid://dmovhuqmimf31" path="res://assets/Sounds/sfx/Guns/shotgun_shot.wav" id="3_gvtle"]
+[ext_resource type="AudioStream" uid="uid://dsi35dvp2dv65" path="res://assets/Sounds/sfx/Guns/shotgun_reload.wav" id="4_53kw6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
+atlas = ExtResource("1_cfymm")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n87hn"]
+atlas = ExtResource("1_cfymm")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnagx"]
+atlas = ExtResource("1_cfymm")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu6di"]
+atlas = ExtResource("1_cfymm")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2fub2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"not_shooting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6auo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n87hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnagx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu6di")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 40.0
+}]
+
+[node name="GunMarker" type="Marker2D"]
+position = Vector2(9.33333, 0)
+
+[node name="FiringAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, 0)
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_2fub2")
+animation = &"not_shooting"
+autoplay = "not_shooting"
+
+[node name="FiringLight" type="PointLight2D" parent="."]
+position = Vector2(4, 0)
+scale = Vector2(0.3, 0.3)
+enabled = false
+color = Color(1, 0.737255, 0, 1)
+energy = 1.2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("2_6kqby")
+
+[node name="ShootingPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_gvtle")
+volume_db = -5.0
+bus = &"Shooting"
+
+[node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_53kw6")
+bus = &"SFX"

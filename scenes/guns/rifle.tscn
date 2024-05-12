@@ -1,57 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://cu3mbnqj3sro5"]
+[gd_scene load_steps=8 format=3 uid="uid://cu3mbnqj3sro5"]
 
 [ext_resource type="Script" path="res://scripts/guns/gun.gd" id="1_x306o"]
 [ext_resource type="PackedScene" uid="uid://bxrches6f3jyb" path="res://scenes/guns/default_reticle.tscn" id="2_g8yp5"]
 [ext_resource type="Texture2D" uid="uid://bpq3lb7xtrirp" path="res://assets/Guns/rifle.png" id="3_kgptn"]
-[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="4_qvi5d"]
-[ext_resource type="Texture2D" uid="uid://cp2vmh5ovuin3" path="res://assets/Effects/muzzle-flashes.png" id="5_aeeby"]
 [ext_resource type="AudioStream" uid="uid://chtgghwhrb2mn" path="res://assets/Sounds/sfx/Guns/rifle_shot.wav" id="6_vmmve"]
-[ext_resource type="AudioStream" uid="uid://vscpud5oxkkp" path="res://assets/Sounds/sfx/Sci Fi Weapons Cyberpunk Arsenal Preview/AUDIO/GUNMech_Insert Clip_04.wav" id="7_xtyl4"]
 [ext_resource type="Script" path="res://addons/radial_progress/RadialProgress.gd" id="8_011f6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6auo"]
-atlas = ExtResource("5_aeeby")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n87hn"]
-atlas = ExtResource("5_aeeby")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnagx"]
-atlas = ExtResource("5_aeeby")
-region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vu6di"]
-atlas = ExtResource("5_aeeby")
-region = Rect2(24, 0, 8, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mmjwo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}],
-"loop": true,
-"name": &"not_shooting",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j6auo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n87hn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hnagx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vu6di")
-}],
-"loop": false,
-"name": &"shooting",
-"speed": 40.0
-}]
+[ext_resource type="PackedScene" uid="uid://cw6o3lw641oib" path="res://scenes/guns/gun_marker.tscn" id="9_14gd8"]
+[ext_resource type="AudioStream" uid="uid://dta5hypxmk75i" path="res://assets/Sounds/sfx/Guns/rifle_reload.wav" id="10_jgtfd"]
 
 [node name="Rifle" type="Node2D" node_paths=PackedStringArray("reticle", "shoot_point", "animation", "light", "shooting_audio_player", "reload_audio_player", "reload_progress")]
 scale = Vector2(0.75, 0.75)
@@ -70,31 +25,20 @@ reload_progress = NodePath("ReloadProgress")
 position = Vector2(2, -1)
 texture = ExtResource("3_kgptn")
 
-[node name="GunMarker" type="Marker2D" parent="."]
+[node name="GunMarker" parent="." instance=ExtResource("9_14gd8")]
 position = Vector2(9, -1)
 
-[node name="FiringAnimation" type="AnimatedSprite2D" parent="GunMarker"]
-position = Vector2(3, 0)
+[node name="FiringAnimation" parent="GunMarker" index="0"]
 scale = Vector2(0.5, 0.5)
-sprite_frames = SubResource("SpriteFrames_mmjwo")
-animation = &"not_shooting"
-autoplay = "not_shooting"
 
-[node name="FiringLight" type="PointLight2D" parent="GunMarker"]
+[node name="FiringLight" parent="GunMarker" index="1"]
 position = Vector2(3, 0)
-scale = Vector2(0.15, 0.15)
-enabled = false
-color = Color(1, 0.737255, 0, 1)
-energy = 2.5
-texture = ExtResource("4_qvi5d")
 
-[node name="ShootingPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
+[node name="ShootingPlayer" parent="GunMarker" index="2"]
 stream = ExtResource("6_vmmve")
-bus = &"Shooting"
 
-[node name="ReloadPlayer" type="AudioStreamPlayer2D" parent="GunMarker"]
-stream = ExtResource("7_xtyl4")
-bus = &"SFX"
+[node name="ReloadPlayer" parent="GunMarker" index="3"]
+stream = ExtResource("10_jgtfd")
 
 [node name="ReloadProgress" type="Control" parent="."]
 layout_mode = 3
@@ -111,3 +55,5 @@ thickness = 50.0
 bg_color = Color(0.501961, 0.501961, 0.501961, 0)
 bar_color = Color(0, 1, 0, 1)
 ring = true
+
+[editable path="GunMarker"]

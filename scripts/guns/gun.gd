@@ -24,7 +24,7 @@ const MAX_PITCH = 3
 @export_range(0.1, 5) var reload_time: float = 1.5
 @export_range(1, 100) var max_ammo: int = 20
 @export_range(1, 20) var bullets_shot: int = 1
-@export_range(0, 90) var spread: float = 5
+@export_range(0, 90) var spread: float = 0
 
 @onready var radian_spread: float = spread * PI / 180
 @onready var ammo: int = max_ammo
