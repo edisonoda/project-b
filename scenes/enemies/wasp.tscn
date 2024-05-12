@@ -163,11 +163,13 @@ occluder = SubResource("OccluderPolygon2D_dapkq")
 script = ExtResource("5_cxh1v")
 
 [node name="DangerZone" parent="." instance=ExtResource("3_x6fkj")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
 shape = SubResource("CircleShape2D_glllb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_8pepm")
 
 [node name="Flapping" type="AudioStreamPlayer2D" parent="."]

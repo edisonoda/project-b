@@ -19,7 +19,6 @@ var gun: Gun
 
 func _ready():
 	set_class(preload("res://scenes/classes/assault_class.tscn"))
-	set_gun(preload("res://scenes/guns/rifle.tscn"))
 	
 	speed = p_class.speed
 	max_health = p_class.health
@@ -32,15 +31,13 @@ func _physics_process(_delta):
 	move_and_slide()
 
 func set_class(c: Resource):
-	p_class = c.instantiate()
-	p_class.update_player(self)
+	p_class = c.instantiate().with_data(self)
 	add_child(p_class)
 	
-	sprite.sprite_frames = load(p_class.sheet)
-
-func set_gun(g: Resource):
-	gun = g.instantiate()
+	gun = p_class.gun.instantiate()
 	gun_origin.add_child(gun)
+	
+	sprite.sprite_frames = load(p_class.sheet)
 
 func receive_damage(damage):
 	state.receive_damage(damage)

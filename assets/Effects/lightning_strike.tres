@@ -1,0 +1,53 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://cyba83kj7kgil"]
+
+[ext_resource type="Texture2D" uid="uid://b3s5vesb023tf" path="res://assets/Effects/lightning-strike.png" id="1_jo6ns"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0e4ey"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvmq5"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lgtq"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3auk"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlytl"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3yqbd"]
+atlas = ExtResource("1_jo6ns")
+region = Rect2(160, 0, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0e4ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvmq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lgtq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3auk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlytl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3yqbd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]

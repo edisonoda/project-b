@@ -20,10 +20,6 @@ func setup(s: Scarab, p: Player, a_sprite: AnimatedSprite2D):
 	attacking_time = s.attacking_time
 
 func move(delta):
-	if scarab.health <= 0 or scarab.position.distance_to(player.position) < scarab.player_distance:
-		scarab.velocity = Vector2(0.0, 0.0)
-		return
-	
 	var direction = scarab.position.direction_to(player.position)
 	
 	scarab.velocity.x += direction.x * delta * scarab.acceleration

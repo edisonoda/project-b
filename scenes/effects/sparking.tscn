@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://p6kao0dgdcgv"]
+
+[ext_resource type="Texture2D" uid="uid://cprr441mqt3i8" path="res://assets/Effects/lightning.png" id="1_5a5rl"]
+[ext_resource type="Script" path="res://scripts/effects/sparking.gd" id="2_6ylla"]
+[ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="2_un7ly"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dybtk"]
+atlas = ExtResource("1_5a5rl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_foidt"]
+atlas = ExtResource("1_5a5rl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0gvy"]
+atlas = ExtResource("1_5a5rl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18svl"]
+atlas = ExtResource("1_5a5rl")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blksb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dybtk")
+}, {
+"duration": 1.5,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_foidt")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0gvy")
+}, {
+"duration": 1.2,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18svl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Sparking" type="Node2D"]
+script = ExtResource("2_6ylla")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_blksb")
+autoplay = "default"
+frame_progress = 0.713701
+
+[node name="Light" type="PointLight2D" parent="."]
+y_sort_enabled = true
+scale = Vector2(0.1, 0.1)
+color = Color(0.235294, 0.392157, 1, 1)
+texture = ExtResource("2_un7ly")
+height = 30.0
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="AnimatedSprite2D" method="_on_frame_changed"]

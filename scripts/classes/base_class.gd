@@ -3,11 +3,14 @@ extends Node2D
 class_name BaseClass
 
 @export_file("*.tres") var sheet: String = "res://assets/Soldiers/assault_frames.tres"
+@export_file("*.tscn") var gun_path: String = "res://scenes/guns/rifle.tscn"
 @export var health: int = 3
 @export var speed: float = 3000.0
 @export var dash_cooldown: float = 2.0
 @export var ability_cooldown: float = 5.0
 @export var dash_force_ratio: float = 0.05
+
+@onready var gun: Resource = load(gun_path)
 
 var player: Player
 var dash_timer: Repeater = Repeater.new()
@@ -29,10 +32,10 @@ func _process(_delta):
 	if player.velocity.length() < player.speed / 50:
 		player.change_state("normal")
 
-func update_player(p):
+func with_data(p: Player) -> AssaultClass:
 	player = p
 	dashing_force = player.speed * dash_force_ratio
-	player_updated()
+	return self
 
 func use_dash():
 	if not dash_timer.running:
@@ -49,10 +52,8 @@ func dash_finished():
 
 func use_ability():
 	if not ability_timer.running:
+		ability_timer.restart()
 		ability()
-
-func player_updated():
-	pass
 
 func ability():
 	pass

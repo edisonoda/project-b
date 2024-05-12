@@ -4,3 +4,4 @@
 
 [node name="AssaultClass" type="Node2D"]
 script = ExtResource("1_gbbfw")
+gun_path = "res://scenes/guns/shotgun.tscn"

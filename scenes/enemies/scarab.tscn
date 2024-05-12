@@ -190,6 +190,7 @@ exp_points = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_bew52")
+position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_v40ap")
 animation = &"walking"
 autoplay = "walking"
@@ -200,9 +201,13 @@ occluder = SubResource("OccluderPolygon2D_uh2m6")
 script = ExtResource("5_rndt0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_8pepm")
 
 [node name="DangerZone" parent="." instance=ExtResource("5_4gh3n")]
+visible = false
+position = Vector2(-1, 0)
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]

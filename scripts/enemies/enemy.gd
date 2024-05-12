@@ -13,6 +13,7 @@ class_name Enemy
 @onready var player: Player = %Player
 
 var ilimited_speed: bool = false
+var staggered: bool = false
 
 func get_weight() -> float:
 	return weight
@@ -21,7 +22,12 @@ func _physics_process(delta):
 	if velocity.length() < speed:
 		ilimited_speed = false
 	
-	move(delta)
+	if staggered:
+		velocity.x = move_toward(velocity.x, 0, acceleration * delta)
+		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
+	else:
+		move(delta)
+	
 	move_and_slide()
 
 func move(_delta: float):
