@@ -19,7 +19,7 @@ var gun: Gun
 
 func _ready():
 	set_class(preload("res://scenes/classes/assault_class.tscn"))
-	set_gun(preload("res://scenes/guns/shotgun.tscn"))
+	set_gun(preload("res://scenes/guns/rifle.tscn"))
 	
 	speed = p_class.speed
 	max_health = p_class.health

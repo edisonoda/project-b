@@ -173,7 +173,7 @@ radius = 150.0
 
 [node name="Scarab" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 12
 motion_mode = 1
 wall_min_slide_angle = 0.0
 floor_stop_on_slope = false
@@ -181,9 +181,10 @@ floor_block_on_wall = false
 platform_on_leave = 2
 platform_wall_layers = 4
 script = ExtResource("1_bywjx")
+acceleration_difference = 20.0
 sprite = NodePath("AnimatedSprite2D")
 speed = 10.0
-acceleration = 70.0
+acceleration = 120.0
 health = 8.0
 exp_points = 20.0
 
