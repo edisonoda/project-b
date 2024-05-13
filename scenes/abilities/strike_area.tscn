@@ -1,12 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq7yyy8biijv8"]
+[gd_scene load_steps=7 format=3 uid="uid://bq7yyy8biijv8"]
 
 [ext_resource type="Script" path="res://scripts/abilities/strike_area.gd" id="1_si183"]
+[ext_resource type="Texture2D" uid="uid://c8kg75dl0jtaq" path="res://assets/Indicators/round_indicator.png" id="2_faj11"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ssbac"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_kulsr"]
+
+[sub_resource type="Animation" id="Animation_d2q1x"]
+resource_name = "charge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0.75)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"end_charge"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uosml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k78u4"]
+_data = {
+"RESET": SubResource("Animation_uosml"),
+"charge": SubResource("Animation_d2q1x")
+}
 
 [node name="StrikeArea" type="Area2D"]
 collision_mask = 4
 script = ExtResource("1_si183")
 
 [node name="Area" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ssbac")
+scale = Vector2(1e-05, 1e-05)
+shape = SubResource("CircleShape2D_kulsr")
+
+[node name="Sprite" type="Sprite2D" parent="Area"]
+unique_name_in_owner = true
+modulate = Color(0, 0.784314, 1, 1)
+light_mask = 2
+z_index = -1
+z_as_relative = false
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_faj11")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k78u4")
+}

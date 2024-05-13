@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsuoqhqflp6t"
-path="res://.godot/imported/lightning-chain.png-8e4e2ab893b115100f48b67591ed990c.ctex"
+uid="uid://c8kg75dl0jtaq"
+path="res://.godot/imported/round_indicator.png-48c5c3ada87099eaa63e6095d5db7a2c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Effects/lightning-chain.png"
-dest_files=["res://.godot/imported/lightning-chain.png-8e4e2ab893b115100f48b67591ed990c.ctex"]
+source_file="res://assets/Indicators/round_indicator.png"
+dest_files=["res://.godot/imported/round_indicator.png-48c5c3ada87099eaa63e6095d5db7a2c.ctex"]
 
 [params]
 

@@ -3,4 +3,6 @@
 [ext_resource type="Script" path="res://scripts/utils/one_shot_animation.gd" id="1_ic1ke"]
 
 [node name="OneShotAnimation" type="AnimatedSprite2D"]
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_ic1ke")

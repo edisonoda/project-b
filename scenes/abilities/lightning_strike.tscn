@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://43d1gx4y2goe"]
+[gd_scene load_steps=4 format=3 uid="uid://b53wn6yqo1fb1"]
 
-[ext_resource type="Script" path="res://scripts/abilities/lightning_strike.gd" id="1_j6jjj"]
+[ext_resource type="Script" path="res://scripts/abilities/lightning_strike.gd" id="1_rygin"]
+[ext_resource type="AudioStream" uid="uid://d2kp2mmor36pt" path="res://assets/Sounds/sfx/Abilities/thunder.wav" id="2_s2n7w"]
+[ext_resource type="AudioStream" uid="uid://vqx42b5fflix" path="res://assets/Sounds/sfx/Abilities/shock.wav" id="2_yd0c4"]
 
 [node name="LightningStrike" type="Node2D"]
-script = ExtResource("1_j6jjj")
+script = ExtResource("1_rygin")
+
+[node name="ThunderSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s2n7w")
+volume_db = -30.0
+bus = &"SFX"
+
+[node name="ShockSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yd0c4")
+volume_db = -5.0
+bus = &"SFX"

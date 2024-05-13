@@ -1,46 +1,55 @@
 [gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://ceerjsgp2wnv6"]
 
-[ext_resource type="Texture2D" uid="uid://bgjaulfs0yvlc" path="res://assets/Effects/lightning-chain.png" id="1_67h4c"]
+[ext_resource type="Texture2D" uid="uid://bsuoqhqflp6t" path="res://assets/Effects/lightning-chain.png" id="1_67h4c"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0fta"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5taad"]
 atlas = ExtResource("1_67h4c")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4u2b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbx41"]
 atlas = ExtResource("1_67h4c")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ufesg"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcjme"]
 atlas = ExtResource("1_67h4c")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0qmrj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg1e5"]
 atlas = ExtResource("1_67h4c")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(192, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_32q1o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_n54y8"]
 atlas = ExtResource("1_67h4c")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(256, 0, 64, 64)
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e0fta")
+"texture": SubResource("AtlasTexture_5taad")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4u2b")
+"texture": SubResource("AtlasTexture_mbx41")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ufesg")
+"texture": null
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0qmrj")
+"texture": SubResource("AtlasTexture_vcjme")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_32q1o")
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg1e5")
+}, {
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n54y8")
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 24.0
 }]

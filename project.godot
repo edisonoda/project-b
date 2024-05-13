@@ -17,6 +17,8 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 [autoload]
 
 Music="*res://scenes/music.tscn"
+EventManager="*res://scripts/managers/event_manager.gd"
+Constants="*res://scripts/managers/constants.gd"
 
 [display]
 

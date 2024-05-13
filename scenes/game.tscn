@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cmhc4jya2lvcq" path="res://assets/Tileset/tileset_arranged.png" id="1_ddr38"]
 [ext_resource type="PackedScene" uid="uid://uisw7olibfma" path="res://scenes/player.tscn" id="2_k8vjt"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="3_74cfe"]
+[ext_resource type="Script" path="res://scripts/managers/game_manager.gd" id="3_74cfe"]
 [ext_resource type="Texture2D" uid="uid://evcgylef2imo" path="res://assets/Lighting/neutral_point_light.webp" id="4_6uohf"]
 [ext_resource type="PackedScene" uid="uid://x7fla26eq33m" path="res://scenes/enemies/wasp.tscn" id="4_o47pt"]
 [ext_resource type="PackedScene" uid="uid://vwjw1m36ibwf" path="res://scenes/enemies/scarab.tscn" id="6_jcb53"]
@@ -261,6 +261,7 @@ one_shot = true
 
 [node name="TileMap" type="TileMap" parent="."]
 light_mask = 2
+z_index = -10
 tile_set = SubResource("TileSet_lnd6q")
 format = 2
 layer_0/name = "background"
@@ -328,6 +329,7 @@ position = Vector2(367, -96)
 y_sort_enabled = true
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Entities/Lighting"]
+unique_name_in_owner = true
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="Entities/Lighting"]

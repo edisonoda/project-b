@@ -23,8 +23,7 @@ func _physics_process(delta):
 		ilimited_speed = false
 	
 	if staggered:
-		velocity.x = move_toward(velocity.x, 0, acceleration * delta)
-		velocity.y = move_toward(velocity.y, 0, acceleration * delta)
+		velocity = Vector2(0, 0)
 	else:
 		move(delta)
 	
