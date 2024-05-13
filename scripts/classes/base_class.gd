@@ -42,6 +42,7 @@ func use_dash():
 		dash()
 
 func dash():
+	dash_timer.restart()
 	player.change_state("dashing")
 	
 	var direction = Input.get_vector("Walk Left", "Walk Right", "Walk Up", "Walk Down")

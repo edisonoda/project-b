@@ -24,7 +24,6 @@ func _ready():
 
 func _process(delta):
 	var color = Color(color_step, 0) * (delta / charge_time) * -1
-	print(color)
 	EventManager.modulate_canvas(color, false)
 
 func with_data(rad: float, charge: float) -> StrikeArea:

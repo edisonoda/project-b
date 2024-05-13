@@ -5,3 +5,7 @@
 [node name="AssaultClass" type="Node2D"]
 script = ExtResource("1_gbbfw")
 gun_path = "res://scenes/guns/shotgun.tscn"
+health = 5
+speed = 3500.0
+dash_cooldown = 2.5
+ability_cooldown = 8.0

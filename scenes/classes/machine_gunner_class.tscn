@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfdyujpmmy0wr"]
+
+[ext_resource type="Script" path="res://scripts/classes/machine_gunner_class.gd" id="1_wqso8"]
+
+[node name="MachineGunnerClass" type="Node2D"]
+script = ExtResource("1_wqso8")
+sheet = "res://assets/Soldiers/machine_gunner_frames.tres"
+dash_cooldown = 1.5
+ability_cooldown = 10.0
